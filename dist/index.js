@@ -18,10 +18,10 @@ if (__DEV__) {
   Error.stackTraceLimit = Infinity;
 }
 var EventEmitter = (function () {
-  var EventEmitter = function EventEmitter() {
+  function EventEmitter() {
     this._listeners = {};
     this._count = {};
-  };
+  }
 
   _prototypeProperties(EventEmitter, null, {
     events: {
@@ -32,7 +32,7 @@ var EventEmitter = (function () {
       configurable: true
     },
     countListeners: {
-      value: function (ev) {
+      value: function countListeners(ev) {
         if (__DEV__) {
           ev.should.be.a.String;
         }
@@ -46,7 +46,7 @@ var EventEmitter = (function () {
       configurable: true
     },
     emit: {
-      value: function (ev, a, b, c, d, e, f, g, h, i) {
+      value: function emit(ev, a, b, c, d, e, f, g, h, i) {
         // up to 10 arguments
         if (this._listeners[ev] !== void 0) {
           _.each(this._listeners[ev], function (fn) {
@@ -59,7 +59,7 @@ var EventEmitter = (function () {
       configurable: true
     },
     addListener: {
-      value: function (ev, fn) {
+      value: function addListener(ev, fn) {
         var _this = this;
         var lifespan = arguments[2] === undefined ? null : arguments[2];
         // if a lifespan is provided, chainable, else return a reference to the handle to be removed
@@ -90,7 +90,7 @@ var EventEmitter = (function () {
       configurable: true
     },
     removeListener: {
-      value: function (ev, ln) {
+      value: function removeListener(ev, ln) {
         if (__DEV__) {
           ev.should.be.a.String;
           ln.should.be.a.String;
@@ -119,6 +119,8 @@ var emit = EventEmitter.prototype.emit;
 Object.assign(EventEmitter.prototype, {
   on: addListener,
   off: removeListener,
+  addHandler: addListener,
+  removeHandler: removeListener,
   trigger: emit });
 
 module.exports = { EventEmitter: EventEmitter };
