@@ -1,11 +1,10 @@
 "use strict";
 
-var _prototypeProperties = function (child, staticProps, instanceProps) {
-  if (staticProps) Object.defineProperties(child, staticProps);
-  if (instanceProps) Object.defineProperties(child.prototype, instanceProps);
-};
+var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
 
-require("6to5/polyfill");
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+require("babel/polyfill");
 var _ = require("lodash");
 var should = require("should");
 var Promise = (global || window).Promise = require("bluebird");
@@ -19,6 +18,8 @@ if (__DEV__) {
 }
 var EventEmitter = (function () {
   function EventEmitter() {
+    _classCallCheck(this, EventEmitter);
+
     this._listeners = {};
     this._count = {};
   }
@@ -28,7 +29,6 @@ var EventEmitter = (function () {
       get: function () {
         return Object.keys(this._listeners);
       },
-      enumerable: true,
       configurable: true
     },
     countListeners: {
@@ -42,7 +42,6 @@ var EventEmitter = (function () {
         return this._count[ev];
       },
       writable: true,
-      enumerable: true,
       configurable: true
     },
     emit: {
@@ -55,7 +54,6 @@ var EventEmitter = (function () {
         }
       },
       writable: true,
-      enumerable: true,
       configurable: true
     },
     addListener: {
@@ -86,7 +84,6 @@ var EventEmitter = (function () {
         return ln;
       },
       writable: true,
-      enumerable: true,
       configurable: true
     },
     removeListener: {
@@ -105,7 +102,6 @@ var EventEmitter = (function () {
         }
       },
       writable: true,
-      enumerable: true,
       configurable: true
     }
   });
@@ -113,9 +109,10 @@ var EventEmitter = (function () {
   return EventEmitter;
 })();
 
-var addListener = EventEmitter.prototype.addListener;
-var removeListener = EventEmitter.prototype.removeListener;
-var emit = EventEmitter.prototype.emit;
+var _EventEmitter$prototype = EventEmitter.prototype;
+var addListener = _EventEmitter$prototype.addListener;
+var removeListener = _EventEmitter$prototype.removeListener;
+var emit = _EventEmitter$prototype.emit;
 Object.assign(EventEmitter.prototype, {
   on: addListener,
   off: removeListener,

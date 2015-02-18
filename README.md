@@ -12,7 +12,19 @@ To correct these two drawbacks, here's my little Yet Another EventEmitter Implem
 - Event handlers are referenced by a unique, short string key.
 - Although using Objects as maps is slower than using Arrays, it is actually faster when the number of handlers is large. When its not, then the loss is most often negligible.
 
+<<<<<<< HEAD
 - Bottom line: its faster when speed is an issue; its slower when its not.
+=======
+- Sanely configured `gulpfile.js`, `package.json`, `.gitignore`, `.editorconfig` and `.jshintrc`.
+- ES6 code from the `src` folder is transpiled into ES5 code in the `dist` folder via `babel`.
+- Both CommonJS and ES6 modules are supported.
+- Several modules and variables are automatically injected in each module at transpile time. Check (and edit) `__prelude.js`.
+- `__DEV__` and `__PROD__` are boolean constants reflecting `process.env.NODE_ENV`. Best friends with `envify` and `uglify`.
+- `__BROWSER__` and `__NODE__` are boolean constants trying hard to reflect whether the code runs in the browser (via browserify/webpack) or in a NodeJS env.
+- `bluebird` implementation of `Promise` is injected into global scope, since its is so neat and it outperforms native `Promise`.
+- `should` is injected into each module, so you can do development-time assertions that are skipped in production, eg. `if(__DEV__) { n.should.be.a.Number; }`.
+- `_` (`lodash`) is also injected into each module.
+>>>>>>> starterkit/master
 
 - Bonus: its an ES6 class. You can `extend` it (although to be honest you can also extend node `events`.EventEmitter).
 
