@@ -2,6 +2,12 @@ class EventEmitter {
   constructor() {
     this._listeners = {};
     this._count = {};
+    _.bindAll(this, [
+      'countListeners',
+      'emit', 'addListener', 'removeListener',
+      'trigger', 'on', 'off',
+      'addHandler', 'removeHandler',
+    ]);
   }
 
   get events() {
