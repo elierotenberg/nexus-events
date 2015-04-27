@@ -24,7 +24,8 @@ class EventEmitter {
     }
   }
 
-  addListener(ev, fn, lifespan = null) { // if a lifespan is provided, chainable, else return a reference to the handle to be removed
+  // if a lifespan is provided, chainable, else return a reference to the handle to be removed
+  addListener(ev, fn, lifespan = null) {
     if(__DEV__) {
       ev.should.be.a.String;
       fn.should.be.a.Function;
