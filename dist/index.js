@@ -52,9 +52,8 @@ var EventEmitter = (function () {
     }
   }, {
     key: 'emit',
-
-    // up to 10 arguments
     value: function emit(ev, a, b, c, d, e, f, g, h, i) {
+      // up to 10 arguments
       if (this._listeners[ev] !== void 0) {
         _.each(this._listeners[ev], function (fn) {
           return fn(a, b, c, d, e, f, g, h, i);
