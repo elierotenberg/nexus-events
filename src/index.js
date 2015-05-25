@@ -18,7 +18,8 @@ class EventEmitter {
     return this._count[ev];
   }
 
-  emit(ev, a, b, c, d, e, f, g, h, i) { // up to 10 arguments
+  // up to 10 arguments
+  emit(ev, a, b, c, d, e, f, g, h, i) {
     if(this._listeners[ev] !== void 0) {
       _.each(this._listeners[ev], (fn) => fn(a, b, c, d, e, f, g, h, i));
     }
