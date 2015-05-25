@@ -32,7 +32,7 @@
     "babel": "^5.4.7",
     "babel-runtime": "^5.4.7",
     "bluebird": "^2.9.26",
-    "lifespan": "^3.0.0",
+    "lifespan": "^3.1.0",
     "lodash": "^3.9.2",
     "should": "^6.0.3"
   }
