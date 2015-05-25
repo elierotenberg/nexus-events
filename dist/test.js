@@ -1,14 +1,13 @@
 'use strict';
 
-var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+var _interopRequireDefault = require('babel-runtime/helpers/interop-require-default')['default'];
 
-var _EventEmitter = require('../');
+var _2 = require('../');
 
-var _Lifespan = require('lifespan');
+var _lifespan = require('lifespan');
 
-var _Lifespan2 = _interopRequireDefault(_Lifespan);
+var _lifespan2 = _interopRequireDefault(_lifespan);
 
-require('babel/polyfill');
 var _ = require('lodash');
 var should = require('should');
 var Promise = (global || window).Promise = require('bluebird');
@@ -21,7 +20,7 @@ if (__DEV__) {
   Error.stackTraceLimit = Infinity;
 }
 
-var emitter = new _EventEmitter.EventEmitter();
+var emitter = new _2.EventEmitter();
 var count = 0;
 var ln = emitter.on('increase', function (n) {
   return count = count + (n || 1);
@@ -35,7 +34,7 @@ emitter.off('increase', ln);
 emitter.trigger('increase', 100);
 count.should.be.exactly(42);
 var count2 = 1;
-var lifespan = new _Lifespan2['default']();
+var lifespan = new _lifespan2['default']();
 emitter.on('multiplyBy', function (p) {
   return count2 = count2 * p;
 }, lifespan);

@@ -1,13 +1,19 @@
 'use strict';
 
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
+var _createClass = require('babel-runtime/helpers/create-class')['default'];
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _classCallCheck = require('babel-runtime/helpers/class-call-check')['default'];
 
-Object.defineProperty(exports, '__esModule', {
+var _Object$defineProperty = require('babel-runtime/core-js/object/define-property')['default'];
+
+var _Object$keys = require('babel-runtime/core-js/object/keys')['default'];
+
+var _Object$assign = require('babel-runtime/core-js/object/assign')['default'];
+
+_Object$defineProperty(exports, '__esModule', {
   value: true
 });
-require('babel/polyfill');
+
 var _ = require('lodash');
 var should = require('should');
 var Promise = (global || window).Promise = require('bluebird');
@@ -31,7 +37,7 @@ var EventEmitter = (function () {
   _createClass(EventEmitter, [{
     key: 'events',
     get: function () {
-      return Object.keys(this._listeners);
+      return _Object$keys(this._listeners);
     }
   }, {
     key: 'countListeners',
@@ -111,7 +117,7 @@ var addListener = _EventEmitter$prototype.addListener;
 var removeListener = _EventEmitter$prototype.removeListener;
 var emit = _EventEmitter$prototype.emit;
 
-Object.assign(EventEmitter.prototype, {
+_Object$assign(EventEmitter.prototype, {
   on: addListener,
   off: removeListener,
   addHandler: addListener,
