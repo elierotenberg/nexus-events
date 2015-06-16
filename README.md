@@ -40,3 +40,7 @@ lifespan.release();
 emitter.trigger('multiplyBy', 2);
 count2.should.be.exactly(8);
 ```
+
+### Usage
+
+This module is written in ES6/7. You will need `babel` to run it.

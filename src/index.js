@@ -1,3 +1,7 @@
+import _ from 'lodash';
+import 'should';
+const __DEV__ = process.env.NODE_ENV === 'development';
+
 class EventEmitter {
   constructor() {
     this._listeners = {};
@@ -25,6 +29,10 @@ class EventEmitter {
     }
   }
 
+  trigger(ev, a, b, c, d, e, f, g, h, i) {
+    return this.emit(ev, a, b, c, d, e, f, g, h, i);
+  }
+
   // if a lifespan is provided, chainable, else return a reference to the handle to be removed
   addListener(ev, fn, lifespan = null) {
     if(__DEV__) {
@@ -48,6 +56,14 @@ class EventEmitter {
     return ln;
   }
 
+  on(ev, fn, lifespan = null) {
+    return this.addListener(ev, fn, lifespan);
+  }
+
+  addHandler(ev, fn, lifespan = null) {
+    return this.addListener(ev, fn, lifespan);
+  }
+
   removeListener(ev, ln) {
     if(__DEV__) {
       ev.should.be.a.String;
@@ -62,15 +78,14 @@ class EventEmitter {
       delete this._count[ev];
     }
   }
-}
 
-const { addListener, removeListener, emit } = EventEmitter.prototype;
-Object.assign(EventEmitter.prototype, {
-  on: addListener,
-  off: removeListener,
-  addHandler: addListener,
-  removeHandler: removeListener,
-  trigger: emit,
-});
+  off(ev, ln) {
+    return this.removeListener(ev, ln);
+  }
+
+  removeHandler(ev, ln) {
+    return this.removeListener(ev, ln);
+  }
+}
 
 export default { EventEmitter };
